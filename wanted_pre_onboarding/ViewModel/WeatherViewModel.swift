@@ -16,7 +16,19 @@ struct WeatherViewModel{
     }
     
     var city : String{
-        return weather.name
+        var cityName = weather.name
+        if cityName.contains(" "){
+            if let range = cityName.range(of: " "){
+                let s = cityName.distance(from: cityName.startIndex, to: range.lowerBound)
+                cityName = cityName[0..<s]
+            }
+        }else if cityName.contains("-"){
+            if let range = cityName.range(of: "-"){
+                let s = cityName.distance(from: cityName.startIndex, to: range.lowerBound)
+                cityName = cityName[0..<s]
+            }
+        }
+        return cityName
     }
     
     var temp : String{

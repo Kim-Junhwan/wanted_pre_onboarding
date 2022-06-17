@@ -22,6 +22,7 @@
 		C75D7857285CD1AE00DEDD87 /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75D7856285CD1AE00DEDD87 /* WeatherListViewModel.swift */; };
 		C75D785A285CD22800DEDD87 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75D7859285CD22800DEDD87 /* Constants.swift */; };
 		C75D785C285CF39700DEDD87 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75D785B285CF39700DEDD87 /* WeatherViewModel.swift */; };
+		C75D785F285D16F200DEDD87 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75D785E285D16F200DEDD87 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		C75D7856285CD1AE00DEDD87 /* WeatherListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
 		C75D7859285CD22800DEDD87 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C75D785B285CF39700DEDD87 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		C75D785E285D16F200DEDD87 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		C75D7821285B1B1800DEDD87 /* wanted_pre_onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C75D785D285D16E600DEDD87 /* Extension */,
 				C75D7858285CD1F500DEDD87 /* Utils */,
 				C75D7855285CD19600DEDD87 /* ViewModel */,
 				C75D7850285C1D5000DEDD87 /* Web */,
@@ -148,6 +151,14 @@
 				C75D7859285CD22800DEDD87 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C75D785D285D16E600DEDD87 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C75D785E285D16F200DEDD87 /* StringExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 				C75D7848285B77CF00DEDD87 /* CityWeatherMoreInfoViewController.swift in Sources */,
 				C75D7825285B1B1800DEDD87 /* SceneDelegate.swift in Sources */,
 				C75D783B285B2B5700DEDD87 /* Constants.swift in Sources */,
+				C75D785F285D16F200DEDD87 /* StringExtension.swift in Sources */,
 				C75D7857285CD1AE00DEDD87 /* WeatherListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
