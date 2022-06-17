@@ -44,12 +44,14 @@ class WeatherTableViewController: UITableViewController {
         //let url = URL(string : "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=462c4e7edfd0874d7f9c5eba541e3eb2&units=metric")!
             WeatherManager().getWeather(url: Constants.cityUrl(city: city)) { weather in
             if let weather = weather {
-                self.weatherListViewModel.addWeather(weatherResponse: weather)
-                if self.weatherListViewModel.numOfSection() == self.citiesEng.count{
-                self.weatherListViewModel.sortWeathers()
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                WeatherIconManager().getWeatherIcon(url: Constants.weatherIconUrl(icon: weather.weather[0].icon)) { weatherIcon in
+                    self.weatherListViewModel.addWeather(weatherViewModel: WeatherViewModel(weather, iconImage: weatherIcon))
+                    if self.weatherListViewModel.numOfSection() == self.citiesEng.count{
+                        self.weatherListViewModel.sortWeathers()
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
                 }
             }
             }
@@ -73,7 +75,7 @@ class WeatherTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: WeatherListCell.identifier, for: indexPath) as! WeatherListCell
         cell.cityNameLabel.text = citiesDic[weatherViewModel.city]
         cell.temperatureLabel.text = weatherViewModel.temp
-        cell.weatherIconImageLabel.text = weatherViewModel.icon
+        cell.weatherIconImageLabel.image = weatherViewModel.icomImage
         cell.humidityLabel.text = weatherViewModel.humidity
         return cell
     }

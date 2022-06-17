@@ -6,14 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 class WeatherIconManager{
-    func load(url : URL, completion : @escaping (Data)->()){
+    func getWeatherIcon(url : URL, completion : @escaping (UIImage)->()){
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let data = data{
-                DispatchQueue.global(qos: .background).async {
-                    completion(data)
-                }
+                completion(UIImage(data: data)!)
             }
         }.resume()
     }

@@ -26,8 +26,8 @@ class WeatherListCell : UITableViewCell{
         return temperatureLabel
     }()
     
-    let weatherIconImageLabel : UILabel = {
-        let weatherIconImageLabel = UILabel()
+    let weatherIconImageLabel : UIImageView = {
+        let weatherIconImageLabel = UIImageView()
         weatherIconImageLabel.translatesAutoresizingMaskIntoConstraints = false
         return weatherIconImageLabel
     }()

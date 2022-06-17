@@ -11,8 +11,9 @@ import UIKit
 struct WeatherViewModel{
     private let weather : WeatherResponse
     
-    init(_ weather : WeatherResponse){
+    init(_ weather : WeatherResponse, iconImage : UIImage){
         self.weather = weather
+        self.icomImage = iconImage
     }
     
     var city : String{
@@ -66,4 +67,6 @@ struct WeatherViewModel{
     var icon : String{
         return weather.weather[0].icon
     }
+    
+    var icomImage : UIImage
 }

@@ -8,14 +8,14 @@
 import Foundation
 
 struct WeatherListViewModel{
-    var weathers : [WeatherResponse]
+    var weathers : [WeatherViewModel]
     
-    mutating func addWeather(weatherResponse : WeatherResponse){
-        weathers.append(weatherResponse)
+    mutating func addWeather(weatherViewModel : WeatherViewModel){
+        weathers.append(weatherViewModel)
     }
     
     mutating func sortWeathers(){
-        weathers = weathers.sorted {$0.name < $1.name}
+        weathers = weathers.sorted {$0.city < $1.city}
     }
     
     func numOfSection()->Int{
@@ -23,8 +23,7 @@ struct WeatherListViewModel{
     }
     
     func weatherAtIndex(index : Int) -> WeatherViewModel{
-        let weather = self.weathers[index]
-        return WeatherViewModel(weather)
+        return self.weathers[index]
     }
 }
 

@@ -11,4 +11,8 @@ struct Constants{
     static func cityUrl(city : String)->URL{
         return URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=462c4e7edfd0874d7f9c5eba541e3eb2&units=metric")!
     }
+    
+    static func weatherIconUrl(icon : String)->URL{
+        return URL(string: "http://openweathermap.org/img/wn/\(icon)@2x.png")!
+    }
 }
