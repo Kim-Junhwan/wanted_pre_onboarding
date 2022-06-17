@@ -9,7 +9,10 @@ import UIKit
 
 class WeatherTableViewController: UITableViewController {
     
-    let cities : [String : String] = ["Gongju":"공주","Gwangju":"광주","Gumi":"구미","Gunsan":"군산","Daegu":"대구","Daejeon":"대전","Mokpo":"목포","Busan":"부산","Seosan":"서산","Seoul":"서울","Sokcho":"속초","Suwon":"수원","Suncheon":"순천", "Ulsan":"울산", "Iksan":"익산", "Jeonju":"전주", "Jeju":"제주시", "Cheonan":"천안", "Cheongju":"청주", "ChunCheon":"춘천"]
+    let citiesDic : [String : String] = ["Gongju":"공주","Gwangju":"광주","Gumi":"구미","Gunsan":"군산","Daegu":"대구","Daejeon":"대전","Mokpo":"목포","Busan":"부산","Seosan":"서산","Seoul":"서울","Sokcho":"속초","Suwon":"수원","Suncheon":"순천", "Ulsan":"울산", "Iksan":"익산", "Jeonju":"전주", "Jeju":"제주시", "Cheonan":"천안", "Cheongju":"청주", "ChunCheon":"춘천"]
+    let citiesEng = ["Gongju", "Gwangju", "Gumi", "Gunsan", "Daegu", "Daejeon", "Mokpo", "Busan", "Seosan", "Seoul", "Sokcho", "Suwon", "Suncheon", "Ulsan", "Iksan", "Jeonju", "Jeju", "Cheonan", "Cheongju", "ChunCheon"]
+    
+    var weatherListViewModel : WeatherListViewModel = WeatherListViewModel(weathers: [])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,7 @@ class WeatherTableViewController: UITableViewController {
         setTitle()
         registerTableViewCell()
         setTableView()
+        getCityWeather()
     }
     
     func setTitle(){
@@ -35,6 +39,23 @@ class WeatherTableViewController: UITableViewController {
         tableView.rowHeight = 60
     }
     
+    func getCityWeather(){
+        for city in citiesEng {
+        //let url = URL(string : "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=462c4e7edfd0874d7f9c5eba541e3eb2&units=metric")!
+            WeatherManager().getWeather(url: Constants.cityUrl(city: city)) { weather in
+            if let weather = weather {
+                self.weatherListViewModel.addWeather(weatherResponse: weather)
+                if self.weatherListViewModel.numOfSection() == self.citiesEng.count{
+                DispatchQueue.main.async {
+                    self.weatherListViewModel.sortWeathers()
+                    self.tableView.reloadData()
+                }
+                }
+            }
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,16 +65,16 @@ class WeatherTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return cities.count
+        return weatherListViewModel.numOfSection()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let weatherViewModel = self.weatherListViewModel.weatherAtIndex(index: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: WeatherListCell.identifier, for: indexPath) as! WeatherListCell
-        
-        cell.cityNameLabel.text = "Seoul"
-        cell.humidityLabel.text = "20%"
-        cell.temperatureLabel.text = "24C"
-        cell.weatherIconImageLabel.text = "Cloud"
+        cell.cityNameLabel.text = weatherViewModel.city
+        cell.temperatureLabel.text = weatherViewModel.temp
+        cell.weatherIconImageLabel.text = weatherViewModel.icon
+        cell.humidityLabel.text = weatherViewModel.humidity
         return cell
     }
 
