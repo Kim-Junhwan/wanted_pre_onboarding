@@ -90,15 +90,92 @@ class CityWeatherMoreInfoViewController : UIViewController{
     
     let humidityView : UIView = {
        let humidityView = UIView()
+        let textLabel = UILabel()
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
         humidityView.translatesAutoresizingMaskIntoConstraints = false
         humidityView.backgroundColor = .systemGray
+        humidityView.addSubview(textLabel)
+        textLabel.text = "습도"
         return humidityView
+    }()
+    
+    let humidityLabel : UILabel = {
+        let humidityLabel = UILabel()
+        humidityLabel.translatesAutoresizingMaskIntoConstraints = false
+        return humidityLabel
+    }()
+    
+    let feelTempView : UIView = {
+        let feelTempView  = UIView()
+         let textLabel = UILabel()
+         textLabel.translatesAutoresizingMaskIntoConstraints = false
+         feelTempView .translatesAutoresizingMaskIntoConstraints = false
+         feelTempView .backgroundColor = .systemGray
+         feelTempView .addSubview(textLabel)
+         textLabel.text = "체감온도"
+         return feelTempView
+     }()
+    
+    let feelTempLabel : UILabel = {
+        let feelTempLabel = UILabel()
+        feelTempLabel.translatesAutoresizingMaskIntoConstraints = false
+        return feelTempLabel
+    }()
+    
+    let humidity_windChill_stackView : UIStackView = {
+       let humidity_windChill_stackView = UIStackView()
+        humidity_windChill_stackView.translatesAutoresizingMaskIntoConstraints = false
+        humidity_windChill_stackView.axis = .horizontal
+        humidity_windChill_stackView.spacing = 10
+        return humidity_windChill_stackView
+    }()
+    
+    let pressureView : UIView = {
+       let pressureView = UIView()
+        let textLabel = UILabel()
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        pressureView.translatesAutoresizingMaskIntoConstraints = false
+        pressureView.backgroundColor = .systemGray
+        pressureView.addSubview(textLabel)
+        textLabel.text = "기압"
+        return pressureView
+    }()
+    
+    let pressureLabel : UILabel = {
+        let pressureLabel = UILabel()
+        pressureLabel.translatesAutoresizingMaskIntoConstraints = false
+        return pressureLabel
+    }()
+    
+    let windSpeedView : UIView = {
+        let windSpeedView  = UIView()
+         let textLabel = UILabel()
+         textLabel.translatesAutoresizingMaskIntoConstraints = false
+         windSpeedView .translatesAutoresizingMaskIntoConstraints = false
+         windSpeedView .backgroundColor = .systemGray
+         windSpeedView .addSubview(textLabel)
+         textLabel.text = "풍속"
+         return windSpeedView
+     }()
+    
+    let windSpeedLabel : UILabel = {
+        let windSpeedLabel = UILabel()
+        windSpeedLabel.translatesAutoresizingMaskIntoConstraints = false
+        return windSpeedLabel
+    }()
+    
+    let pressure_windSpeed_stackView : UIStackView = {
+       let pressure_windSpeed_stackView = UIStackView()
+        pressure_windSpeed_stackView.translatesAutoresizingMaskIntoConstraints = false
+        pressure_windSpeed_stackView.axis = .horizontal
+        pressure_windSpeed_stackView.spacing = 10
+        return pressure_windSpeed_stackView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.largeTitleDisplayMode = .never
-        print(weatherViewModel)
+        //print(weatherViewModel)
         setView()
         autoLayout()
         setUI(weatherViewModel)
@@ -119,8 +196,17 @@ class CityWeatherMoreInfoViewController : UIViewController{
         self.temp_min_max_stackView.addArrangedSubview(temp_maxLabel)
         self.temp_min_max_stackView.addArrangedSubview(temp_minLabel)
         
-        self.mainView.addSubview(humidityView)
+        self.mainView.addSubview(humidity_windChill_stackView)
+        self.humidity_windChill_stackView.addArrangedSubview(humidityView)
+        self.humidity_windChill_stackView.addArrangedSubview(feelTempView)
+        self.humidityView.addSubview(humidityLabel)
+        self.feelTempView.addSubview(feelTempLabel)
         
+        self.mainView.addSubview(pressure_windSpeed_stackView)
+        self.pressure_windSpeed_stackView.addArrangedSubview(pressureView)
+        self.pressure_windSpeed_stackView.addArrangedSubview(windSpeedView)
+        self.pressureView.addSubview(pressureLabel)
+        self.windSpeedView.addSubview(windSpeedLabel)
     }
     
     func autoLayout(){
@@ -148,13 +234,35 @@ class CityWeatherMoreInfoViewController : UIViewController{
             temp_min_max_stackView.topAnchor.constraint(equalTo: weatherDescriptionStackView.bottomAnchor, constant: 0),
             temp_min_max_stackView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
             
-            humidityView.topAnchor.constraint(equalTo: temp_min_max_stackView.bottomAnchor),
-            humidityView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
-            humidityView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
-            humidityView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor),
-            humidityView.heightAnchor.constraint(equalToConstant: 1000),
-//            humidityView.widthAnchor.constraint(equalToConstant: 50),
-//            humidityView.heightAnchor.constraint(equalToConstant: 50),
+            humidityView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.3),
+            humidityView.heightAnchor.constraint(equalTo: humidityView.widthAnchor),
+            
+            humidityLabel.centerXAnchor.constraint(equalTo: humidityView.centerXAnchor),
+            humidityLabel.centerYAnchor.constraint(equalTo: humidityView.centerYAnchor),
+            
+            feelTempView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.3),
+            feelTempView.heightAnchor.constraint(equalTo: humidityView.widthAnchor),
+            
+            feelTempLabel.centerXAnchor.constraint(equalTo: feelTempView.centerXAnchor),
+            feelTempLabel.centerYAnchor.constraint(equalTo: feelTempView.centerYAnchor),
+            
+            humidity_windChill_stackView.topAnchor.constraint(equalTo: temp_min_max_stackView.bottomAnchor, constant: 20),
+            humidity_windChill_stackView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+            
+            pressureView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.3),
+            pressureView.heightAnchor.constraint(equalTo: pressureView.widthAnchor),
+            
+            pressureLabel.centerXAnchor.constraint(equalTo: pressureView.centerXAnchor),
+            pressureLabel.centerYAnchor.constraint(equalTo: pressureView.centerYAnchor),
+            
+            windSpeedView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.3),
+            windSpeedView.heightAnchor.constraint(equalTo: windSpeedView.widthAnchor),
+            
+            windSpeedLabel.centerXAnchor.constraint(equalTo: windSpeedView.centerXAnchor),
+            windSpeedLabel.centerYAnchor.constraint(equalTo: windSpeedView.centerYAnchor),
+            
+            pressure_windSpeed_stackView.topAnchor.constraint(equalTo: humidity_windChill_stackView.bottomAnchor, constant: 10),
+            pressure_windSpeed_stackView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
         ])
     }
     
@@ -165,6 +273,10 @@ class CityWeatherMoreInfoViewController : UIViewController{
         descriptionLabel.text = weatherViewModel.description
         temp_maxLabel.text = "최고:\(weatherViewModel.temp_max)°"
         temp_minLabel.text = "최저:\(weatherViewModel.temp_min)°"
+        humidityLabel.text = "\(weatherViewModel.humidity)%"
+        feelTempLabel.text = "\(weatherViewModel.feels_like)"
+        pressureLabel.text = "\(weatherViewModel.pressure)hPa"
+        windSpeedLabel.text = "\(weatherViewModel.wind_speed)m/s"
     }
     
     func resizeImage(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {

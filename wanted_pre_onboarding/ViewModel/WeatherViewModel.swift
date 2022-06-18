@@ -49,7 +49,7 @@ struct WeatherViewModel{
     }
     
     var pressure : String{
-        return String(format: "%.2f", weather.main.pressure)
+        return String(format: "%d", weather.main.pressure)
     }
     
     var humidity : String{
