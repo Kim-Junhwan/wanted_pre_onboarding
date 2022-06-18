@@ -25,5 +25,9 @@ struct WeatherListViewModel{
     func weatherAtIndex(index : Int) -> WeatherViewModel{
         return self.weathers[index]
     }
+    
+    mutating func setEmptyWethers(){
+        weathers = []
+    }
 }
 

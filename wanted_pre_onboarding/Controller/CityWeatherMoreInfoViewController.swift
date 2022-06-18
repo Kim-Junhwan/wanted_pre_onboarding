@@ -15,7 +15,7 @@ class CityWeatherMoreInfoViewController : UIViewController{
     let contentScrollView : UIScrollView = {
        let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .systemBackground
+        scrollView.backgroundColor = UIColor(red: 0.19, green: 0.20, blue: 0.42, alpha: 1.00)
         //scrollView.showsVerticalScrollIndicator = true
         return scrollView
     }()
@@ -30,7 +30,7 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let cityNameLabel = UILabel()
         cityNameLabel.translatesAutoresizingMaskIntoConstraints = false
         cityNameLabel.font = UIFont.systemFont(ofSize: 20)
-        cityNameLabel.text = "Seoul"
+        cityNameLabel.textColor = .white
        return cityNameLabel
     }()
     
@@ -38,7 +38,7 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let tempLabel = UILabel()
         tempLabel.translatesAutoresizingMaskIntoConstraints = false
         tempLabel.font = UIFont.boldSystemFont(ofSize: 80)
-        tempLabel.text = "20°"
+        tempLabel.textColor = .white
        return tempLabel
     }()
     
@@ -52,7 +52,7 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.font = UIFont.systemFont(ofSize: 15)
-        descriptionLabel.text = "흐림"
+        descriptionLabel.textColor = .white
        return descriptionLabel
     }()
     
@@ -68,7 +68,7 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let temp_maxLabel = UILabel()
         temp_maxLabel.translatesAutoresizingMaskIntoConstraints = false
         temp_maxLabel.font = UIFont.systemFont(ofSize: 15)
-        temp_maxLabel.text = "최고:26"
+        temp_maxLabel.textColor = .white
        return temp_maxLabel
     }()
     
@@ -76,7 +76,7 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let temp_minLabel = UILabel()
         temp_minLabel.translatesAutoresizingMaskIntoConstraints = false
         temp_minLabel.font = UIFont.systemFont(ofSize: 15)
-        temp_minLabel.text = "최저:21"
+        temp_minLabel.textColor = .white
        return temp_minLabel
     }()
     
@@ -93,15 +93,18 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         humidityView.translatesAutoresizingMaskIntoConstraints = false
-        humidityView.backgroundColor = .systemGray
+        humidityView.backgroundColor = UIColor(red: 0.41, green: 0.43, blue: 0.88, alpha: 1.00)
+        humidityView.layer.cornerRadius = 10
         humidityView.addSubview(textLabel)
         textLabel.text = "습도"
+        textLabel.textColor = .white
         return humidityView
     }()
     
     let humidityLabel : UILabel = {
         let humidityLabel = UILabel()
         humidityLabel.translatesAutoresizingMaskIntoConstraints = false
+        humidityLabel.textColor = .white
         return humidityLabel
     }()
     
@@ -110,15 +113,18 @@ class CityWeatherMoreInfoViewController : UIViewController{
          let textLabel = UILabel()
          textLabel.translatesAutoresizingMaskIntoConstraints = false
          feelTempView .translatesAutoresizingMaskIntoConstraints = false
-         feelTempView .backgroundColor = .systemGray
+         feelTempView .backgroundColor = UIColor(red: 0.41, green: 0.43, blue: 0.88, alpha: 1.00)
          feelTempView .addSubview(textLabel)
+         feelTempView.layer.cornerRadius = 10
          textLabel.text = "체감온도"
+         textLabel.textColor = .white
          return feelTempView
      }()
     
     let feelTempLabel : UILabel = {
         let feelTempLabel = UILabel()
         feelTempLabel.translatesAutoresizingMaskIntoConstraints = false
+        feelTempLabel.textColor = .white
         return feelTempLabel
     }()
     
@@ -135,15 +141,18 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         pressureView.translatesAutoresizingMaskIntoConstraints = false
-        pressureView.backgroundColor = .systemGray
+        pressureView.backgroundColor = UIColor(red: 0.41, green: 0.43, blue: 0.88, alpha: 1.00)
         pressureView.addSubview(textLabel)
+        pressureView.layer.cornerRadius = 10
         textLabel.text = "기압"
+        textLabel.textColor = .white
         return pressureView
     }()
     
     let pressureLabel : UILabel = {
         let pressureLabel = UILabel()
         pressureLabel.translatesAutoresizingMaskIntoConstraints = false
+        pressureLabel.textColor = .white
         return pressureLabel
     }()
     
@@ -152,15 +161,18 @@ class CityWeatherMoreInfoViewController : UIViewController{
          let textLabel = UILabel()
          textLabel.translatesAutoresizingMaskIntoConstraints = false
          windSpeedView .translatesAutoresizingMaskIntoConstraints = false
-         windSpeedView .backgroundColor = .systemGray
+         windSpeedView .backgroundColor = UIColor(red: 0.41, green: 0.43, blue: 0.88, alpha: 1.00)
          windSpeedView .addSubview(textLabel)
+         windSpeedView.layer.cornerRadius = 10
          textLabel.text = "풍속"
+         textLabel.textColor = .white
          return windSpeedView
      }()
     
     let windSpeedLabel : UILabel = {
         let windSpeedLabel = UILabel()
         windSpeedLabel.translatesAutoresizingMaskIntoConstraints = false
+        windSpeedLabel.textColor = .white
         return windSpeedLabel
     }()
     

@@ -12,7 +12,7 @@ class WeatherTableViewController: UITableViewController {
     let citiesDic = Constants.citiesDic
     let citiesEng = Constants.citiesEng
     
-    var weatherListViewModel : WeatherListViewModel = WeatherListViewModel(weathers: [])
+    var weatherListViewModel : WeatherListViewModel!
     var selectWeather : WeatherViewModel?
 
     override func viewDidLoad() {
@@ -41,11 +41,11 @@ class WeatherTableViewController: UITableViewController {
     }
     
     func getCityWeather(){
+        weatherListViewModel = WeatherListViewModel(weathers: [])
         for city in citiesEng {
             WeatherManager().getWeather(url: Constants.cityUrl(city: city)) { weather in
             if let weather = weather {
                 if let icon = WeatherIconManager().checkCache(icon: Constants.weatherIconUrl(icon: weather.weather[0].icon).path){
-                    print("Cache Image")
                     self.weatherListViewModel.addWeather(weatherViewModel: WeatherViewModel(weather, iconImage: icon))
                     if self.weatherListViewModel.numOfSection() == self.citiesEng.count{
                         self.weatherListViewModel.sortWeathers()
@@ -55,7 +55,6 @@ class WeatherTableViewController: UITableViewController {
                     }
                 }else{
                 WeatherIconManager().getWeatherIcon(url: Constants.weatherIconUrl(icon: weather.weather[0].icon)) { weatherIcon in
-                    print("Download Image")
                     self.weatherListViewModel.addWeather(weatherViewModel: WeatherViewModel(weather, iconImage: weatherIcon))
                     if self.weatherListViewModel.numOfSection() == self.citiesEng.count{
                         self.weatherListViewModel.sortWeathers()
