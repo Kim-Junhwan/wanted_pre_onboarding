@@ -13,7 +13,7 @@ struct WeatherViewModel{
     
     init(_ weather : WeatherResponse, iconImage : UIImage){
         self.weather = weather
-        self.icomImage = iconImage
+        self.iconImage = iconImage
     }
     
     var city : String{
@@ -33,19 +33,19 @@ struct WeatherViewModel{
     }
     
     var temp : String{
-        return String(format: "%.2f", weather.main.temp)
+        return String(format: "%.1f", weather.main.temp)
     }
     
     var feels_like : String{
-        return String(format: "%.2f", weather.main.feels_like)
+        return String(format: "%.1f", weather.main.feels_like)
     }
     
     var temp_min : String{
-        return String(format: "%.2f", weather.main.temp_min)
+        return String(format: "%.1f", weather.main.temp_min)
     }
     
     var temp_max : String{
-        return String(format: "%.2f", weather.main.temp_max)
+        return String(format: "%.1f", weather.main.temp_max)
     }
     
     var pressure : String{
@@ -68,5 +68,5 @@ struct WeatherViewModel{
         return weather.weather[0].icon
     }
     
-    var icomImage : UIImage
+    var iconImage : UIImage
 }
