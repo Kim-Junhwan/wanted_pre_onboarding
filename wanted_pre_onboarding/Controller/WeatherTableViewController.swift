@@ -41,10 +41,20 @@ class WeatherTableViewController: UITableViewController {
     
     func getCityWeather(){
         for city in citiesEng {
-        //let url = URL(string : "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=462c4e7edfd0874d7f9c5eba541e3eb2&units=metric")!
             WeatherManager().getWeather(url: Constants.cityUrl(city: city)) { weather in
             if let weather = weather {
+                if let icon = WeatherIconManager().checkCache(icon: Constants.weatherIconUrl(icon: weather.weather[0].icon).path){
+                    print("Cache Image")
+                    self.weatherListViewModel.addWeather(weatherViewModel: WeatherViewModel(weather, iconImage: icon))
+                    if self.weatherListViewModel.numOfSection() == self.citiesEng.count{
+                        self.weatherListViewModel.sortWeathers()
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }else{
                 WeatherIconManager().getWeatherIcon(url: Constants.weatherIconUrl(icon: weather.weather[0].icon)) { weatherIcon in
+                    print("Download Image")
                     self.weatherListViewModel.addWeather(weatherViewModel: WeatherViewModel(weather, iconImage: weatherIcon))
                     if self.weatherListViewModel.numOfSection() == self.citiesEng.count{
                         self.weatherListViewModel.sortWeathers()
@@ -52,6 +62,7 @@ class WeatherTableViewController: UITableViewController {
                             self.tableView.reloadData()
                         }
                     }
+                }
                 }
             }
             }
