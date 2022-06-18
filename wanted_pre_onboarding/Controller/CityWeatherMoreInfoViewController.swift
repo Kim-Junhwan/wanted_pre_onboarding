@@ -105,6 +105,7 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let humidityLabel = UILabel()
         humidityLabel.translatesAutoresizingMaskIntoConstraints = false
         humidityLabel.textColor = .white
+        humidityLabel.font = UIFont.boldSystemFont(ofSize: 25)
         return humidityLabel
     }()
     
@@ -125,6 +126,7 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let feelTempLabel = UILabel()
         feelTempLabel.translatesAutoresizingMaskIntoConstraints = false
         feelTempLabel.textColor = .white
+        feelTempLabel.font = UIFont.boldSystemFont(ofSize: 25)
         return feelTempLabel
     }()
     
@@ -153,6 +155,7 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let pressureLabel = UILabel()
         pressureLabel.translatesAutoresizingMaskIntoConstraints = false
         pressureLabel.textColor = .white
+        pressureLabel.font = UIFont.boldSystemFont(ofSize: 25)
         return pressureLabel
     }()
     
@@ -173,6 +176,7 @@ class CityWeatherMoreInfoViewController : UIViewController{
         let windSpeedLabel = UILabel()
         windSpeedLabel.translatesAutoresizingMaskIntoConstraints = false
         windSpeedLabel.textColor = .white
+        windSpeedLabel.font = UIFont.boldSystemFont(ofSize: 25)
         return windSpeedLabel
     }()
     
@@ -286,9 +290,9 @@ class CityWeatherMoreInfoViewController : UIViewController{
         temp_maxLabel.text = "최고:\(weatherViewModel.temp_max)°"
         temp_minLabel.text = "최저:\(weatherViewModel.temp_min)°"
         humidityLabel.text = "\(weatherViewModel.humidity)%"
-        feelTempLabel.text = "\(weatherViewModel.feels_like)"
-        pressureLabel.text = "\(weatherViewModel.pressure)hPa"
-        windSpeedLabel.text = "\(weatherViewModel.wind_speed)m/s"
+        feelTempLabel.text = "\(weatherViewModel.feels_like)°"
+        pressureLabel.text = "\(weatherViewModel.pressure) hPa"
+        windSpeedLabel.text = "\(weatherViewModel.wind_speed) m/s"
     }
     
     func resizeImage(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
