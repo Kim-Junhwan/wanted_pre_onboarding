@@ -1,6 +1,8 @@
-# wanted_pre_onboarding
+# 원티드 프리온보딩 ios코스 선발 과제
 
-* 앱의 처음 실행화면
+디자인패턴 : MVVM
+
+*  앱의 처음 실행화면
 
 ![image](https://user-images.githubusercontent.com/58679737/174451710-f7ef86f3-593d-4009-85cf-fed67f9f5584.png)
 
